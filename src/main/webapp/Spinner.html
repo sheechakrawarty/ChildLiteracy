@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spin Wheel App</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="Spinner.css" />
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <canvas id="wheel"></canvas>
+        <button id="spin-btn" >Spin</button>
+        <img src="data:image/png;base64,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" alt="<==">
+      </div>
+      <div id="final-value">
+        <p class="spin-result">Click On The Spin Button To Start</p>
+      </div>
+    </div>
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <!-- Chart JS Plugin for displaying text over chart -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+    <!-- Script -->
+    <script src="Spinner.js"></script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Constitution Quiz Game</title>
+    <link rel="stylesheet" href="minor.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url('bg1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 300px;
+            max-width: 600px;
+            margin-top: 100px;
+            margin-left: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        .q-container{
+            background-color: aquamarine;
+            height: 50px;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 3px;
+            border : 1px solid black;
+
+        }
+        #answer-button {
+            margin: 10px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .correct {
+            background-color: #28a745;
+        }
+
+        .incorrect {
+            background-color: #dc3545;
+        }
+
+        #next-button {
+            display: next question;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <header class="nav">
+            <h1 class="head">BaalChetna</h1>
+             <div class="profile">
+             <a href="index.jsp">logout</a>
+             <a href="profile.jsp">Profile</a>
+            </div>
+        </header>
+    </nav>
+    <div class="container">
+        <h1>Indian Constitution Quiz Game</h1>
+        <div id="question-container" >
+            <p id="question" class="q-container"></p>
+            <div id="answer-buttons"></div>
+        </div>
+        <button id="next-button" class="btn" onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <script>
+        const questionContainer = document.getElementById('question-container');
+        const questionElement = document.getElementById('question');
+        const answerButtons = document.getElementById('answer-buttons');
+        const nextButton = document.getElementById('next-button');
+
+        const questions = [
+            {
+                question: 'Who is known as the Father of the Indian Constitution?',
+                answers: [
+                    { text: 'Jawaharlal Nehru', correct: false },
+                    { text: 'B.R. Ambedkar', correct: true },
+                    { text: 'Mahatma Gandhi', correct: false },
+                    { text: 'Sardar Patel', correct: false }
+                ]
+            },
+            {
+                question: 'When was the Indian Constitution adopted?',
+                answers: [
+                    { text: '26 January 1950', correct: false },
+                    { text: '15 August 1947', correct: false },
+                    { text: '26 November 1949', correct: true },
+                    { text: '1 January 1951', correct: false }
+                ]
+            },
+            {
+                question: 'Which part of the Indian Constitution deals with Fundamental Rights?',
+                answers: [
+                    { text: 'Part III', correct: true },
+                    { text: 'Part IV', correct: false },
+                    { text: 'Part V', correct: false },
+                    { text: 'Part VI', correct: false }
+                ]
+            },
+            {
+                question: 'How many schedules are there in the Indian Constitution?',
+                answers: [
+                    { text: '8', correct: false },
+                    { text: '9', correct: false },
+                    { text: '10', correct: false },
+                    { text: '12', correct: true }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function startGame() {
+            currentQuestionIndex = 0;
+            nextButton.classList.add('hide');
+            showQuestion(questions[currentQuestionIndex]);
+        }
+
+        function showQuestion(question) {
+            questionElement.innerText = question.question;
+            answerButtons.innerHTML = '';
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.classList.add('btn');
+                button.addEventListener('click', () => selectAnswer(answer));
+                answerButtons.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answer) {
+            Array.from(answerButtons.children).forEach(button => {
+                if (button.innerText === answer.text) {
+                    button.classList.add(answer.correct ? 'correct' : 'incorrect');
+                }
+                button.disabled = true;
+            });
+            nextButton.classList.remove('hide');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+                nextButton.classList.add('hide');
+            } else {
+                questionElement.innerText = 'Congratulations! You have completed the quiz.';
+                answerButtons.innerHTML = '';
+                nextButton.classList.add('hide');
+            }
+        }
+
+        startGame();
+    </script>
+</body>
+</html>

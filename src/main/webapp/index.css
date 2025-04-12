@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body{
+    background-color: #7BD3EA;
+}
+.login-box{
+    height: 400px;
+    width: 500px;
+    border: 10px double rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 20px 20px 20px 20px;
+    font-size: 20px;
+    background-color:#F6F7C4 ;
+}
+.login-box input{
+    height: 25px;
+    width: 80%;
+}
+.login-box div{
+    margin: 10px;
+}
+ 
+
+.submit input{
+	position : relative;
+	bottom:45px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: rgb(31, 122, 212);
+    text-align: center;
+    margin-left: 00px;
+    text-decoration: none;
+    color:yellow;
+    
+    
+}
+.box-fit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+h1{
+    text-align: center;
+}
+.robot input{
+  
+   text-align: center;
+   height: 20px;
+   width:20px;
+   font-size: 15px;
+   margin-left: 100px;
+}
